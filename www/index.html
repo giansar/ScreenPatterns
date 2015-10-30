@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy"
+              content="
+              default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; 
+              style-src 'self' 'unsafe-inline'; 
+              media-src *;
+              connect-src 'self' http://localhost:* http://giansar.net">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.css">
+        <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.layouts.min.css">
+        <style type="text/css">
+            /* Hide when Angular is not yet loaded and initialized */
+            [ng\:cloak],
+            [ng-cloak],
+            [data-ng-cloak],
+            [x-ng-cloak],
+            .ng-cloak,
+            .x-ng-cloak {
+                display: none !important;
+            }
+        </style>
+        <title>Screen Patterns</title>
+    </head>
+    <body ng-cloak>
+        <div ng-controller="MainController as main">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" aria-label="Back" ng-click="main.gotoPage('/')" ng-show="main.backIcon">
+                        <md-icon md-font-set="material-icons">&#xE5C4;</md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Menu" ng-click="main.sidenav()" ng-hide="main.backIcon">
+                        <md-icon md-font-set="material-icons">menu</md-icon>
+                    </md-button>
+                    <h2>
+                        <span>{{main.pageTitle}}</span>
+                    </h2>
+                </div>
+            </md-toolbar>
+            <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+                <md-list>
+                    <md-list-item>
+                        <md-button flex ng-click="main.gotoPage('/register')">Registration</md-button>
+                    </md-list-item>
+                    <md-list-item>
+                        <md-button flex ng-click="main.gotoPage('/login')">Login</md-button>
+                    </md-list-item>
+                    <md-list-item>
+                        <md-button flex ng-click="main.gotoPage('/user')">User Administration</md-button>
+                    </md-list-item>
+                </md-list>
+            </md-sidenav>
+        </div>
+        <div ng-view></div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-aria/angular-aria.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-material/angular-material.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-messages/angular-messages.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="app.service.js"></script>
+        <script type="text/javascript" src="app.config.js"></script>
+        <script type="text/javascript" src="registration/registration.js"></script>
+        <script type="text/javascript" src="user/user.js"></script>
+    </body>
+</html>

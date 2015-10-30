@@ -1,0 +1,56 @@
+<md-content layout-padding>
+    <form name="registrationForm" novalidate>
+        <md-input-container flex>
+            <label>Name</label>
+            <input name="name" ng-model="register.name" required>
+            <div ng-messages="registrationForm.name.$error">
+                <div ng-message="required">required</div>
+            </div>
+        </md-input-container>
+        <md-input-container flex>
+            <label>Email</label>
+            <input name="email" type="email" ng-model="register.email" required>
+            <div ng-messages="registrationForm.email.$error">
+                <div ng-message="required">required</div>
+                <div ng-message="email">Email format must be valid</div>
+            </div>
+        </md-input-container>
+        <md-input-container flex>
+            <label>Password</label>
+            <input name="password" type="password" ng-model="register.password" required>
+            <div ng-messages="registrationForm.password.$error">
+                <div ng-message="required">required</div>
+            </div>
+        </md-input-container>
+        <md-input-container flex>
+            <label>Password Confirmation</label>
+            <input name="password_confirmation" type="password" ng-model="register.password_confirmation" compare-to="register.password" required>
+            <div ng-messages="registrationForm.password_confirmation.$error">
+                <div ng-message="required">required</div>
+                <div ng-message="compareTo">Password Confirmation is not match</div>
+            </div>
+        </md-input-container>
+        <div layout="column" layout-padding>
+            <label>Date of Birth</label>
+            <div ng-messages="registrationForm.birthdate.$error">
+                <div ng-message="required" style="color: #F44336;font-size: 12px;line-height: 24px">required</div>
+            </div>
+            <md-datepicker name="birthdate" ng-model="register.birthdate" required></md-datepicker>            
+        </div>
+        <div layout="column" layout-padding>
+            <label>Gender</label>
+            <div ng-messages="registrationForm.gender.$error">
+                <div ng-message="required" style="color: #F44336;font-size: 12px;line-height: 24px">required</div>
+            </div>
+            <md-radio-group name="gender" ng-model="register.gender" layout="row" required>
+                <md-radio-button value="M">Male</md-radio-button>
+                <md-radio-button value="F">Female</md-radio-button>
+            </md-radio-group>
+        </div>
+    </form>
+    <div layout="row" layout-align="center center">
+        <md-button class="md-raised md-primary" ng-click="register.save()" ng-disabled="registrationForm.$invalid" ng-hide="register.saved">Save</md-button>
+        <md-button class="md-raised md-secondary" ng-click="register.reset(registrationForm)" ng-show="register.saved"><md-icon md-font-set="material-icons">done</md-icon>It's Saved. Register another again.</md-button>
+        <md-button class="md-raised" ng-click="register.reset(registrationForm)" ng-hide="register.saved">Cancel</md-button>
+    </div>
+</md-content>

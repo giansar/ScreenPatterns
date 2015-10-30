@@ -1,0 +1,16 @@
+{
+  "name": "ScreenPatterns",
+  "version": "1.0.0",
+  "main": "path/to/main.css",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "angular-route": "1.4.7",
+    "angular-messages": "1.4.7",
+    "angular-material": "1.0.0-rc1-master-c577566",
+    "angular-resource": "1.4.7"
+  },
+  "devDependencies": {}
+}
